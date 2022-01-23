@@ -18,7 +18,7 @@ async def send_welcome(message: types.Message):
 
 @dp.message_handler(commands=['user'])
 async def send_user(message: types.Message):
-    await message.reply(f"{message.from_user.username}, {message.from_user.id}, {message.text}")
+    await message.reply(f"{message.from_user.username}, {message.from_user.id}, {message.get_command()}")
 
 
 @dp.message_handler()
