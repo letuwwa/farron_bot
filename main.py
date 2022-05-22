@@ -1,16 +1,12 @@
-import logging
-import os
+from aiogram import executor
+from bot.config import dp
 
-from aiogram import Bot, Dispatcher, executor
 
-API_TOKEN = os.environ.get("TOKEN")
+try:
+    from bot.handlers import *
+except ImportError:
+    pass
 
-logging.basicConfig(level=logging.INFO)
-
-bot = Bot(token=API_TOKEN)
-dp = Dispatcher(bot)
 
 if __name__ == '__main__':
-    from handlers import dp
-
     executor.start_polling(dp, skip_updates=True)
